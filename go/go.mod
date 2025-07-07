@@ -1,3 +1,7 @@
-module github.com/gongahkia/ygroorn
+module github.com/ygroorn/ygroorn
 
-go 1.22.3
+go 1.22
+
+require (
+    github.com/spf13/cobra v1.6.0
+)
