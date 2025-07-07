@@ -119,8 +119,26 @@ puts names
 
 ### Go Package Instructions
 
+1. Install the [Go Package](./go/).
+
 ```console
-$ 
+$ cd go
+$ go build -o ygroorn ./cmd/ygroorn
+```
+
+2. Then run the `ygroorn` CLI.
+
+```console
+$ ygroorn generate "Some silly AI project" --vibe playful --theme tech --language English
+```
+
+3. Or call `ygroorn` directly within your project.
+
+```go
+import "github.com/ygroorn/ygroorn/pkg"
+
+names := pkg.GenerateRepoNames("A fun AI project", "playful", "tech", "English", 5)
+fmt.Println(names)
 ```
 
 ## Reference
