@@ -1,12 +1,26 @@
 module Ygroorn
   module Embeddings
-    VECTOR_SIZE = 300
-
-    def self.get_embedding(text, language)
-      seed = text.each_byte.sum
-      Array.new(VECTOR_SIZE) { Math.sin(seed += 1) % 1 }
+    EMBEDDINGS = {}
+    def self.load_embeddings(path)
+      EMBEDDINGS.clear
+      File.foreach(path) do |line|
+        tokens = line.strip.split(' ')
+        next if tokens.size < 2
+        word = tokens.shift
+        EMBEDDINGS[word] = tokens.map(&:to_f)
+      end
     end
-
+    def self.get_embedding(text, language = nil)
+      words = text.downcase.split(/\s+/)
+      vectors = words.map { |w| EMBEDDINGS[w] }.compact
+      return Array.new(EMBEDDINGS.values.first.size, 0.0) if vectors.empty?
+      mean = Array.new(vectors.first.size, 0.0)
+      vectors.each do |vec|
+        vec.each_with_index { |v, i| mean[i] += v }
+      end
+      mean.map! { |v| v / vectors.size }
+      mean
+    end
     def self.cosine_similarity(vec1, vec2)
       dot = vec1.zip(vec2).map { |a, b| a * b }.sum
       norm1 = Math.sqrt(vec1.map { |v| v * v }.sum)
