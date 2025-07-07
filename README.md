@@ -11,14 +11,6 @@ Henceforth abbreviated to `ygroorn`.
 * *Script*: [Python](https://www.python.org/), [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), [Ruby](https://www.ruby-lang.org/en/), [Go](https://go.dev/)
 * *Package*: [Docker]()
 
-## Screenshot
-
-...
-
-## Architecture
-
-...
-
 ## Usage
 
 The below instructions are for running a packaged version of `ygroorn` locally.
@@ -36,6 +28,112 @@ $ git clone https://github.com/gongahkia/ygroorn && cd ygroorn
 ```console
 $ docker build -t ygroorn-all .
 $ docker run -it --rm ygroorn-all
+```
+
+## Architecture
+
+```mermaid
+flowchart TD
+    subgraph Python
+        PYCLI[CLI Typer]
+        PYCore[core.py]
+        PYTraits[traits.py]
+        PYNaming[naming.py]
+        PYEmbeddings[embeddings.py]
+        PYUtils[utils.py]
+        PYCLI --> PYCore
+        PYCore --> PYTraits
+        PYCore --> PYNaming
+        PYCore --> PYEmbeddings
+        PYCore --> PYUtils
+        PYNaming --> PYUtils
+    end
+
+    subgraph NodeJS
+        NJCLI[CLI Yargs]
+        NJCore[core.js]
+        NJTraits[traits.js]
+        NJNaming[naming.js]
+        NJEmbeddings[embeddings.js]
+        NJUtils[utils.js]
+        NJCLI --> NJCore
+        NJCore --> NJTraits
+        NJCore --> NJNaming
+        NJCore --> NJEmbeddings
+        NJCore --> NJUtils
+        NJNaming --> NJUtils
+    end
+
+    subgraph Ruby
+        RBCLI[CLI Thor]
+        RBCore[core.rb]
+        RBTraits[traits.rb]
+        RBNaming[naming.rb]
+        RBEmbeddings[embeddings.rb]
+        RBUtils[utils.rb]
+        RBCLI --> RBCore
+        RBCore --> RBTraits
+        RBCore --> RBNaming
+        RBCore --> RBEmbeddings
+        RBCore --> RBUtils
+        RBNaming --> RBUtils
+    end
+
+    subgraph Go
+        GOCLI[CLI Cobra]
+        GOCore[core.go]
+        GOTraits[traits.go]
+        GONaming[naming.go]
+        GOEmbeddings[embeddings.go]
+        GOUtils[utils.go]
+        GOCLI --> GOCore
+        GOCore --> GOTraits
+        GOCore --> GONaming
+        GOCore --> GOEmbeddings
+        GOCore --> GOUtils
+        GONaming --> GOUtils
+    end
+
+    subgraph SharedConcepts
+        UserInput["User Input (Description, Vibe, Theme, Language)"]
+        WordVectors["Word Vector Models (GloVe/FastText)"]
+        NamePatterns["Name Patterns"]
+        Traits["Vibes, Themes, Languages"]
+    end
+
+    UserInput --> PYCLI
+    UserInput --> NJCLI
+    UserInput --> RBCLI
+    UserInput --> GOCLI
+
+    WordVectors --> PYEmbeddings
+    WordVectors --> NJEmbeddings
+    WordVectors --> RBEmbeddings
+    WordVectors --> GOEmbeddings
+
+    NamePatterns --> PYNaming
+    NamePatterns --> NJNaming
+    NamePatterns --> RBNaming
+    NamePatterns --> GONaming
+
+    Traits --> PYTraits
+    Traits --> NJTraits
+    Traits --> RBTraits
+    Traits --> GOTraits
+
+    classDef cli fill:#b3e6ff,stroke:#333,stroke-width:2px;
+    classDef core fill:#e6ffe6,stroke:#333,stroke-width:2px;
+    classDef traits fill:#fff5b3,stroke:#333,stroke-width:2px;
+    classDef naming fill:#ffd9b3,stroke:#333,stroke-width:2px;
+    classDef embeddings fill:#e6ccff,stroke:#333,stroke-width:2px;
+    classDef utils fill:#cccccc,stroke:#333,stroke-width:2px;
+
+    class PYCLI,NJCLI,RBCLI,GOCLI cli;
+    class PYCore,NJCore,RBCore,GOCore core;
+    class PYTraits,NJTraits,RBTraits,GOTraits traits;
+    class PYNaming,NJNaming,RBNaming,GONaming naming;
+    class PYEmbeddings,NJEmbeddings,RBEmbeddings,GOEmbeddings embeddings;
+    class PYUtils,NJUtils,RBUtils,GOUtils utils;
 ```
 
 ## Coverage
@@ -143,7 +241,7 @@ fmt.Println(names)
 
 ## Reference
 
-My thanks to [Zane Chee](https://www.linkedin.com/in/zanechee/) ([injaneity](https://github.com/injaneity)). The inspiration for this project sprouted from the below conversation with him.
+My thanks to [Zane Chee](https://www.linkedin.com/in/zanechee/) ([@injaneity](https://github.com/injaneity)). The inspiration for this project sprouted from the below conversation with him.
 
 <div align="center">
     <img src="./asset/reference/zane.jpg" width="75%">
