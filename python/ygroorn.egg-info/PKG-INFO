@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: ygroorn
+Version: 0.1.0
+Summary: You're Gonna Run Out Of Repo Names
+Author: Gabriel Ong
+Requires-Dist: typer
+Requires-Dist: numpy

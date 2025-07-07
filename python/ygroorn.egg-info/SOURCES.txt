@@ -1,0 +1,16 @@
+MANIFEST.in
+pyproject.toml
+setup.py
+tests/test_core.py
+ygroorn/__init__.py
+ygroorn/cli.py
+ygroorn/core.py
+ygroorn/embeddings.py
+ygroorn/naming.py
+ygroorn/traits.py
+ygroorn/utils.py
+ygroorn.egg-info/PKG-INFO
+ygroorn.egg-info/SOURCES.txt
+ygroorn.egg-info/dependency_links.txt
+ygroorn.egg-info/requires.txt
+ygroorn.egg-info/top_level.txt
