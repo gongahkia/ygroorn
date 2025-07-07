@@ -13,7 +13,7 @@ func main() {
 
     rootCmd := &cobra.Command{
         Use:   "ygroorn generate [description]",
-        Short: "Generate creative GitHub repo names",
+        Short: "You're Gonna Run Out Of Repo Names",
         Args:  cobra.ExactArgs(1),
         Run: func(cmd *cobra.Command, args []string) {
             description := args[0]
