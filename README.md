@@ -4,11 +4,14 @@
 
 A [CLI tool]() for brainstorming Github Repository names.
 
-Henceforth abbreviated to `YGROORN`.
+Henceforth abbreviated to `ygroorn`.
 
 ## Stack
 
-...
+* []()
+* []()
+* []()
+* *Package*: [Docker]()
 
 ## Screenshot
 
@@ -20,7 +23,21 @@ Henceforth abbreviated to `YGROORN`.
 
 ## Usage
 
-..
+The below instructions are for running a packaged version of `ygroorn` locally.
+
+To call `ygroorn` as a [Module](#python-module-instructions), [Library](#npm-library-instructions), [Gem](#ruby-gem-instructions) or [Package](#go-package-instructions), see the respective instructions [here](#coverage).
+
+1. 
+
+```console
+$
+```
+
+2. 
+
+```console
+$
+```
 
 ## Coverage
 
@@ -30,6 +47,30 @@ Henceforth abbreviated to `YGROORN`.
 * [NPM Library](https://www.npmjs.com/)
 * [Ruby Gem](https://rubygems.org/)
 * [Go Package](https://pkg.go.dev/)
+
+### Python Module Instructions
+
+```console
+$ 
+```
+
+### NPM Library Instructions
+
+```console
+$ 
+```
+
+### Ruby Gem Instructions
+
+```console
+$ 
+```
+
+### Go Package Instructions
+
+```console
+$ 
+```
 
 ## Reference
 
