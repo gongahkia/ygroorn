@@ -8,9 +8,7 @@ Henceforth abbreviated to `ygroorn`.
 
 ## Stack
 
-* []()
-* []()
-* []()
+* *Script*: [Python](https://www.python.org/), [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), [Ruby](https://www.ruby-lang.org/en/), [Go](https://go.dev/)
 * *Package*: [Docker]()
 
 ## Screenshot
@@ -42,7 +40,7 @@ $ docker run -it --rm ygroorn-all
 
 ## Coverage
 
-`YGROORN` is currently served via the following sources.
+`ygroorn` is currently served via the following sources.
 
 * [Python Module](https://docs.python.org/3/tutorial/modules.html)
 * [NPM Library](https://www.npmjs.com/)
@@ -51,20 +49,72 @@ $ docker run -it --rm ygroorn-all
 
 ### Python Module Instructions
 
+1. Install the [Python module](./python/).
+
 ```console
-$ 
+$ cd python
+$ pip install .
+```
+
+2. Then run the `ygroorn` CLI.
+
+```console
+$ ygroorn generate "Some silly AI project" --vibe playful --theme tech --language English
+```
+
+3. Or call `ygroorn` directly within your project.
+
+```py
+import ygroorn
+names = ygroorn.generate_repo_names("Some silly AI project", "playful", "tech", "English", 5)
+print(names)
 ```
 
 ### NPM Library Instructions
 
+1. Install the [Node.js package](./nodejs/).
+
 ```console
-$ 
+$ cd nodejs
+$ npm install -g .
+```
+
+2. Then run the `ygroorn` CLI.
+
+```console
+$ ygroorn generate "Some silly AI project" --vibe playful --theme tech --language English
+```
+
+3. Or call `ygroorn` directly within your project.
+
+```py
+const { generateRepoNames } = require('ygroorn');
+const names = generateRepoNames('Some silly AI project', 'playful', 'tech', 'English', 5);
+console.log(names);
 ```
 
 ### Ruby Gem Instructions
 
+1. Install the [Ruby Gem](./ruby/).
+
 ```console
-$ 
+$ cd ruby
+$ gem build ygroorn.gemspec
+$ gem install ./ygroorn-0.1.0.gem 
+```
+
+2. Then run the `ygroorn` CLI.
+
+```console
+$ ygroorn generate "Some silly AI project" --vibe playful --theme tech --language English
+```
+
+3. Or call `ygroorn` directly within your project.
+
+```rb
+require 'ygroorn'
+names = Ygroorn.generate_repo_names('Some silly AI project', 'playful', 'tech', 'English', 5)
+puts names
 ```
 
 ### Go Package Instructions
