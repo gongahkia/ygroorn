@@ -1,21 +1,63 @@
 package pkg
 
 import (
+    "bufio"
     "math"
+    "os"
+    "strings"
+    "strconv"
 )
 
-const vectorSize = 300
+var Embeddings = make(map[string][]float64)
+
+func LoadEmbeddings(path string) error {
+    Embeddings = make(map[string][]float64)
+    file, err := os.Open(path)
+    if err != nil {
+        return err
+    }
+    defer file.Close()
+    scanner := bufio.NewScanner(file)
+    for scanner.Scan() {
+        line := scanner.Text()
+        fields := strings.Fields(line)
+        if len(fields) < 2 {
+            continue
+        }
+        word := fields[0]
+        vec := make([]float64, len(fields)-1)
+        for i := 1; i < len(fields); i++ {
+            vec[i-1], _ = strconv.ParseFloat(fields[i], 64)
+        }
+        Embeddings[word] = vec
+    }
+    return scanner.Err()
+}
 
 func GetEmbedding(text, language string) []float64 {
-    seed := 0
-    for _, c := range text {
-        seed += int(c)
+    words := strings.Fields(strings.ToLower(text))
+    var sum []float64
+    count := 0
+    for _, w := range words {
+        if vec, ok := Embeddings[w]; ok {
+            if sum == nil {
+                sum = make([]float64, len(vec))
+            }
+            for i := range vec {
+                sum[i] += vec[i]
+            }
+            count++
+        }
     }
-    vec := make([]float64, vectorSize)
-    for i := 0; i < vectorSize; i++ {
-        vec[i] = math.Mod(math.Sin(float64(seed+i)), 1)
+    if count == 0 && len(Embeddings) > 0 {
+        for _, v := range Embeddings {
+            return make([]float64, len(v))
+        }
     }
-    return vec
+    for i := range sum {
+        sum[i] /= float64(count)
+    }
+    return sum
 }
 
 func CosineSimilarity(vec1, vec2 []float64) float64 {
