@@ -3,7 +3,6 @@ package pkg
 import (
     "regexp"
     "strings"
-    "unicode"
 )
 
 func CleanText(text string) string {

@@ -1,5 +1,9 @@
 package pkg
 
+import (
+    "sort"
+)
+
 func GenerateRepoNames(description, vibe, theme, language string, n int) []string {
     profile := GetTraitProfile(vibe, theme, language)
     descVec := GetEmbedding(CleanText(description), language)
