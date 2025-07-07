@@ -143,6 +143,8 @@ fmt.Println(names)
 
 ## Reference
 
-My thanks to [Zane Chee](https://github.com/injaneity). The inspiration for this project sprouted from the below conversation with him.
+My thanks to [Zane Chee](https://www.linkedin.com/in/zanechee/) ([injaneity](https://github.com/injaneity)). The inspiration for this project sprouted from the below conversation with him.
 
-![](./asset/reference/zane.png)
+<div align="center">
+    <img src="./asset/reference/zane.jpg" width="75%">
+</div>
