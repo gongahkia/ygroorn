@@ -27,16 +27,17 @@ The below instructions are for running a packaged version of `ygroorn` locally.
 
 To call `ygroorn` as a [Module](#python-module-instructions), [Library](#npm-library-instructions), [Gem](#ruby-gem-instructions) or [Package](#go-package-instructions), see the respective instructions [here](#coverage).
 
-1. 
+1. Execute the below.
 
 ```console
-$
+$ git clone https://github.com/gongahkia/ygroorn && cd ygroorn
 ```
 
-2. 
+2. To build and run the `ygroorn` Docker Image in interactive mode, run the below.
 
 ```console
-$
+$ docker build -t ygroorn-all .
+$ docker run -it --rm ygroorn-all
 ```
 
 ## Coverage
