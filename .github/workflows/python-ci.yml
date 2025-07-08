@@ -1,0 +1,32 @@
+name: Python CI
+
+on:
+  push:
+    paths:
+      - 'python/**'
+  pull_request:
+    paths:
+      - 'python/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          cd python
+          pip install -r requirements.txt
+          pip install .
+
+      - name: Run tests
+        run: |
+          cd python
+          pytest --maxfail=3 --disable-warnings --cov=ygroorn tests/
