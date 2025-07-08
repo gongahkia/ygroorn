@@ -9,7 +9,8 @@ Henceforth abbreviated to `ygroorn`.
 ## Stack
 
 * *Script*: [Python](https://www.python.org/), [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), [Ruby](https://www.ruby-lang.org/en/), [Go](https://go.dev/)
-* *Package*: [Docker]()
+* *Package*: [Docker](https://www.docker.com/)
+* *CI/CD*: [Github Actions](https://github.com/features/actions)
 
 ## Usage
 
